@@ -7,11 +7,11 @@
     "scheme": "hookpnp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/app-icon-all.png",
+    "icon": "./assets/images/hook-logo.png",
     "splash": {
-      "image": "./assets/images/splash-logo-all.png",
+      "image": "./assets/images/hook-logo.png",
       "resizeMode": "contain",
-      "backgroundColor": "#191015"
+      "backgroundColor": "#7103B6"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -28,9 +28,9 @@
         "backgroundImage": "./assets/images/app-icon-android-adaptive-background.png"
       },
       "splash": {
-        "image": "./assets/images/splash-logo-android-universal.png",
+        "image": "./assets/images/hook-logo.png",
         "resizeMode": "contain",
-        "backgroundColor": "#191015"
+        "backgroundColor": "#7103B6"
       }
     },
     "ios": {
@@ -38,10 +38,10 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.hookpnp",
       "splash": {
-        "image": "./assets/images/splash-logo-ios-mobile.png",
-        "tabletImage": "./assets/images/splash-logo-ios-tablet.png",
+        "image": "./assets/images/hook-logo.png",
+        "tabletImage": "./assets/images/hook-logo.png",
         "resizeMode": "contain",
-        "backgroundColor": "#191015"
+        "backgroundColor": "#7103B6"
       }
     },
     "web": {
