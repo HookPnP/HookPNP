@@ -10,12 +10,25 @@ import {
   SpaceGrotesk_700Bold as spaceGroteskBold,
 } from "@expo-google-fonts/space-grotesk"
 
+import {
+  WorkSans_300Light as workSansLight,
+  WorkSans_400Regular as workSansRegular,
+  WorkSans_500Medium as workSansMedium,
+  WorkSans_600SemiBold as workSansSemiBold,
+  WorkSans_700Bold as workSansBold,
+} from "@expo-google-fonts/work-sans"
+
 export const customFontsToLoad = {
   spaceGroteskLight,
   spaceGroteskRegular,
   spaceGroteskMedium,
   spaceGroteskSemiBold,
   spaceGroteskBold,
+  workSansLight,
+  workSansRegular,
+  workSansMedium,
+  workSansSemiBold,
+  workSansBold,
 }
 
 const fonts = {
@@ -26,6 +39,14 @@ const fonts = {
     medium: "spaceGroteskMedium",
     semiBold: "spaceGroteskSemiBold",
     bold: "spaceGroteskBold",
+  },
+  workSans: {
+    // Cross-platform Google font.
+    light: "workSansLight",
+    normal: "workSansRegular",
+    medium: "workSansMedium",
+    semiBold: "workSansSemiBold",
+    bold: "workSansBold",
   },
   helveticaNeue: {
     // iOS only font.
@@ -59,7 +80,7 @@ export const typography = {
   /**
    * The primary font. Used in most places.
    */
-  primary: fonts.spaceGrotesk,
+  primary: fonts.workSans,
   /**
    * An alternate font used for perhaps titles and stuff.
    */

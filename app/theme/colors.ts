@@ -11,12 +11,23 @@ const palette = {
   neutral800: "#191015",
   neutral900: "#000000",
 
-  primary100: "#F4E0D9",
-  primary200: "#E8C1B4",
-  primary300: "#DDA28E",
-  primary400: "#D28468",
-  primary500: "#C76542",
-  primary600: "#A54F31",
+  // primary100: "#F4E0D9",
+  // primary200: "#E8C1B4",
+  // primary300: "#DDA28E",
+  // primary400: "#D28468",
+  // primary500: "#C76542",
+  // primary600: "#A54F31",
+
+  primary: "#7103B6",
+  primary0: "#FBF5FF",
+  primary100: "#E8C5FD",
+  primary200: "#D398F9",
+  blue: "#2F80ED",
+  orange: "#F2994A",
+  secondaryBlue: "#060042",
+
+  gray300: "#828282",
+  gray400: "#BDBDBD",
 
   secondary100: "#DCDDE9",
   secondary200: "#BCC0D6",
@@ -59,7 +70,7 @@ export const colors = {
   /**
    * The default color of the screen background.
    */
-  background: palette.neutral200,
+  background: palette.neutral100,
   /**
    * The default border color.
    */
@@ -67,7 +78,7 @@ export const colors = {
   /**
    * The main tinting color.
    */
-  tint: palette.primary500,
+  // tint: palette.primary500,
   /**
    * A subtle color used for lines.
    */
@@ -81,4 +92,8 @@ export const colors = {
    *
    */
   errorBackground: palette.angry100,
+  /**
+   * Button color.
+   */
+  button: palette.secondaryBlue,
 }

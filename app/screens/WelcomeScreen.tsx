@@ -1,62 +1,96 @@
 import { observer } from "mobx-react-lite"
 import React, { FC } from "react"
-import { Image, ImageStyle, TextStyle, View, ViewStyle } from "react-native"
+import {
+  Image,
+  ImageStyle,
+  TextStyle,
+  View,
+  ViewStyle,
+  Text as ReactNativeText,
+} from "react-native"
 import { Button, Text } from "app/components"
-import { isRTL } from "../i18n"
-import { useStores } from "../models"
+// import { isRTL } from "../i18n"
+// import { useStores } from "../models"
 import { AppStackScreenProps } from "../navigators"
 import { colors, spacing } from "../theme"
-import { useHeader } from "../utils/useHeader"
+// import { useHeader } from "../utils/useHeader"
 import { useSafeAreaInsetsStyle } from "../utils/useSafeAreaInsetsStyle"
 
-const welcomeLogo = require("../../assets/images/logo.png")
-const welcomeFace = require("../../assets/images/welcome-face.png")
+const welcomeLogo = require("../../assets/images/hook-logo.png")
 
 interface WelcomeScreenProps extends AppStackScreenProps<"Welcome"> {}
 
 export const WelcomeScreen: FC<WelcomeScreenProps> = observer(function WelcomeScreen(_props) {
   const { navigation } = _props
-  const {
-    authenticationStore: { logout },
-  } = useStores()
+  // const {
+  //   authenticationStore: { logout },
+  // } = useStores()
 
-  function goNext() {
-    navigation.navigate("Demo", { screen: "DemoShowroom", params: {} })
+  // function goNext() {
+  //   navigation.navigate("Demo", { screen: "DemoShowroom", params: {} })
+  // }
+
+  function goLogin() {
+    navigation.navigate("Login")
   }
 
-  useHeader(
-    {
-      rightTx: "common.logOut",
-      onRightPress: logout,
-    },
-    [logout],
-  )
+  function goSignUp() {
+    navigation.navigate("SignUp")
+  }
+
+  // useHeader(
+  //   {
+  //     rightTx: "common.logOut",
+  //     onRightPress: logout,
+  //   },
+  //   [logout],
+  // )
 
   const $bottomContainerInsets = useSafeAreaInsetsStyle(["bottom"])
 
   return (
     <View style={$container}>
       <View style={$topContainer}>
-        <Image style={$welcomeLogo} source={welcomeLogo} resizeMode="contain" />
         <Text
-          testID="welcome-heading"
-          style={$welcomeHeading}
-          tx="welcomeScreen.readyForLaunch"
-          preset="heading"
+          text="Welcome to"
+          size="xl"
+          style={{
+            color: colors.palette.neutral100,
+          }}
         />
-        <Text tx="welcomeScreen.exciting" preset="subheading" />
-        <Image style={$welcomeFace} source={welcomeFace} resizeMode="contain" />
+        <View style={$imageContainerStyle}>
+          <Image style={$welcomeLogo} source={welcomeLogo} resizeMode="cover" />
+        </View>
       </View>
 
       <View style={[$bottomContainer, $bottomContainerInsets]}>
-        <Text tx="welcomeScreen.postscript" size="md" />
+        <ReactNativeText></ReactNativeText>
+        <View style={$buttonContainerStyle}>
+          <Button
+            testID="next-screen-button"
+            preset="reversed"
+            text="Get started"
+            onPress={goSignUp}
+            style={{
+              backgroundColor: colors.button,
+            }}
+          />
+          <Button
+            testID="next-screen-button"
+            preset="default"
+            text="Log in"
+            onPress={goLogin}
+            style={{
+              borderColor: colors.button,
+            }}
+          />
+        </View>
 
-        <Button
-          testID="next-screen-button"
-          preset="reversed"
-          tx="welcomeScreen.letsGo"
-          onPress={goNext}
-        />
+        <ReactNativeText style={$textBoxStyle}>
+          By continuing you accept our{" "}
+          <ReactNativeText style={$innerTextBoxStyle}>Terms of service</ReactNativeText> and{" "}
+          <ReactNativeText style={$innerTextBoxStyle}>Privacy policy</ReactNativeText>
+        </ReactNativeText>
       </View>
     </View>
   )
@@ -64,21 +98,22 @@ export const WelcomeScreen: FC<WelcomeScreenProps> = observer(function WelcomeSc
 
 const $container: ViewStyle = {
   flex: 1,
-  backgroundColor: colors.background,
+  backgroundColor: colors.palette.primary,
 }
 
 const $topContainer: ViewStyle = {
   flexShrink: 1,
   flexGrow: 1,
-  flexBasis: "57%",
+  flexBasis: "45%",
   justifyContent: "center",
-  paddingHorizontal: spacing.lg,
+  alignItems: "center",
+  // paddingHorizontal: spacing.lg,
 }
 
 const $bottomContainer: ViewStyle = {
   flexShrink: 1,
   flexGrow: 0,
-  flexBasis: "43%",
+  flexBasis: "55%",
   backgroundColor: colors.palette.neutral100,
   borderTopLeftRadius: 16,
   borderTopRightRadius: 16,
@@ -86,20 +121,37 @@ const $bottomContainer: ViewStyle = {
   justifyContent: "space-around",
 }
 const $welcomeLogo: ImageStyle = {
-  height: 88,
+  height: "100%",
   width: "100%",
+  maxWidth: 250,
+  alignSelf: "center",
+  marginHorizontal: "auto",
+}
+
+const $imageContainerStyle: ViewStyle = {
+  position: "relative",
+  width: "100%",
+  height: 50,
+  overflow: "hidden",
+}
+
+const $buttonContainerStyle: ViewStyle = {
+  flexDirection: "column",
+  gap: spacing.md,
   marginBottom: spacing.xxl,
+  // paddingHorizontal: spacing.lg,
 }
 
-const $welcomeFace: ImageStyle = {
-  height: 169,
-  width: 269,
-  position: "absolute",
-  bottom: -47,
-  right: -80,
-  transform: [{ scaleX: isRTL ? -1 : 1 }],
+const $textBoxStyle: TextStyle = {
+  color: colors.palette.neutral500,
+  textAlign: "center",
+  width: "70%",
+  alignSelf: "center",
+  fontSize: 14,
+  lineHeight: 20,
+  marginBottom: spacing.sm,
 }
 
-const $welcomeHeading: TextStyle = {
-  marginBottom: spacing.md,
+const $innerTextBoxStyle: TextStyle = {
+  color: colors.button,
 }
