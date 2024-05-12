@@ -115,6 +115,17 @@ export const iconRegistry = {
   Bookings: require("../../assets/icons/Bookings.png"),
   search: require("../../assets/icons/search.png"),
   star: require("../../assets/icons/star.png"),
+  videoIcon: require("../../assets/icons/VideoIcon.png"),
+  chat: require("../../assets/icons/chatNew.png"),
+  notification: require("../../assets/icons/notification.png"),
+  setting: require("../../assets/icons/setting.png"),
+  support: require("../../assets/icons/support.png"),
+  aboutUs: require("../../assets/icons/AboutUs.png"),
+  terms: require("../../assets/icons/Terms.png"),
+  privacy: require("../../assets/icons/Privacy.png"),
+  wallet: require("../../assets/icons/wallet.png"),
+  creditCard: require("../../assets/icons/creditCard.png"),
+  logOut: require("../../assets/icons/out.png"),
 }
 
 const $imageStyleBase: ImageStyle = {

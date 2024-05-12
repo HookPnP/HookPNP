@@ -9,7 +9,7 @@ import {
   View,
   ViewStyle,
 } from "react-native"
-import { Text, Screen, TextField, Icon, ListView, ListViewRef } from "app/components"
+import { Text, Screen, ListView, ListViewRef } from "app/components"
 // import { AppStackScreenProps } from "../navigators"
 import { colors, spacing, typography } from "../theme"
 import { useSafeAreaInsetsStyle } from "../utils/useSafeAreaInsetsStyle"
@@ -18,11 +18,6 @@ import { ContentStyle } from "@shopify/flash-list"
 
 const ModelImage = require("../../assets/images/modelImage.png")
 
-interface NavListItem {
-  title: string
-  id: number
-}
-
 interface ModelListItem {
   name: string
   id: number
@@ -30,14 +25,16 @@ interface ModelListItem {
   location: string
   rating: number
   reviews: number
-  status: "Online" | "Offline"
+  status: "in-progress" | "completed"
+  price?: number
+  date?: string
+  booked: boolean
 }
 
 export const BookingsScreen: FC<HomeTabScreenProps<"BookingsScreen">> = observer(
   function BookingsScreen(_props) {
     const { navigation } = _props
     const modelRef = useRef<ListViewRef<ModelListItem>>(null)
-    const [selected, setSelected] = React.useState<number>(1)
 
     // function goNext() {
     //   navigation.navigate("Demo", { screen: "DemoShowroom", params: {} })
@@ -51,7 +48,9 @@ export const BookingsScreen: FC<HomeTabScreenProps<"BookingsScreen">> = observer
         location: "Los Angeles, CA",
         rating: 4.5,
         reviews: 200,
-        status: "Online",
+        status: "in-progress",
+        booked: true,
+        date: "15th Feb, 2024",
       },
       {
         name: "Water Clark",
@@ -60,7 +59,9 @@ export const BookingsScreen: FC<HomeTabScreenProps<"BookingsScreen">> = observer
         location: "Los Angeles, CA",
         rating: 4.5,
         reviews: 200,
-        status: "Online",
+        status: "completed",
+        booked: false,
+        date: "15th Feb, 2024",
       },
       {
         name: "fire Fox",
@@ -69,7 +70,9 @@ export const BookingsScreen: FC<HomeTabScreenProps<"BookingsScreen">> = observer
         location: "Los Angeles, CA",
         rating: 4.5,
         reviews: 200,
-        status: "Online",
+        status: "completed",
+        booked: false,
+        date: "15th Feb, 2024",
       },
       {
         name: "Black Fox",
@@ -78,7 +81,9 @@ export const BookingsScreen: FC<HomeTabScreenProps<"BookingsScreen">> = observer
         location: "Los Angeles, CA",
         rating: 4.5,
         reviews: 200,
-        status: "Online",
+        status: "in-progress",
+        booked: true,
+        date: "15th Feb, 2024",
       },
     ]
 
@@ -91,7 +96,7 @@ export const BookingsScreen: FC<HomeTabScreenProps<"BookingsScreen">> = observer
     return (
       <Screen preset="fixed" safeAreaEdges={["top"]} contentContainerStyle={$screenContainer}>
         <View style={$topContainer}>
-          <Text text="Bookings" preset="subheading" />
+          <Text text="Bookings" preset="subheading" style={$textHeadingStyle} />
         </View>
 
         <View style={[$bottomContainerInsets, $bottomContainer]}>
@@ -108,35 +113,24 @@ export const BookingsScreen: FC<HomeTabScreenProps<"BookingsScreen">> = observer
                   <View>
                     <Text text={item.name} preset="default" style={$modelTextNameStyle} />
                     <View style={$modelStatusStyle}>
-                      <View style={$modelStatusIconStyle}></View>
-                      <Text text={item.status} preset="default" style={$modelTextStatusStyle} />
+                      <Text text={item.date} preset="default" style={$modelTextStatusStyle} />
                     </View>
                   </View>
                   <View style={$modelRightTextStyle}>
-                    <View style={$modelStarStyle}>
-                      <Icon icon="star" size={14} color={"#FCC01C"} style={$modelStarIcon} />
-
+                    <TouchableOpacity style={$modelRightBtn}>
                       <Text
-                        text={item.rating.toString()}
-                        preset="default"
-                        style={$modelTextNameStyle}
+                        text={item.booked ? "Booked" : "Not Booked"}
+                        style={$modelRightBtnText}
                       />
-                    </View>
-                    <Text
-                      text={`(${item.reviews} Reviews)`}
-                      preset="default"
-                      style={$modelTextStatusStyle}
-                    />
+                    </TouchableOpacity>
                   </View>
                 </View>
 
                 {/* Location button */}
                 <View style={$modelLocationContainerStyle}>
                   <View style={$modelLocationTextContainerStyle}>
-                    <Text text={item.location} preset="default" style={$modelLocationText} />
+                    <Text text={item.status} preset="default" style={$modelLocationText} />
                   </View>
-
-                  <Icon icon="heart" size={20} color="#fff" />
                 </View>
               </TouchableOpacity>
             )}
@@ -167,52 +161,8 @@ const $topContainer: ViewStyle = {
   marginBottom: spacing.md,
 }
 
-const $textFieldStyle: ViewStyle = {
-  height: 48,
-  borderRadius: 30,
-  width: "100%",
-  justifyContent: "center",
-  alignContent: "center",
-  alignItems: "center",
-  backgroundColor: colors.palette.neutral100,
-  borderWidth: 1,
-  borderColor: "#E7E7E7",
-  shadowColor: "#0000001A",
-  shadowOffset: { width: 0, height: 4 },
-  shadowOpacity: 1,
-  shadowRadius: 10,
-  marginBottom: 24,
-}
-
-const $textFieldTextStyle: TextStyle = {
+const $textHeadingStyle: TextStyle = {
   alignSelf: "center",
-  fontSize: 14,
-  lineHeight: 18,
-}
-
-const $navItemStyle: ViewStyle = {
-  paddingHorizontal: 13.81,
-  paddingVertical: 7.67,
-  borderWidth: 1,
-  borderColor: "#CFCFCE",
-  borderRadius: 30,
-  marginRight: 10,
-  alignItems: "center",
-}
-
-const $navItemActiveStyle: ViewStyle = {
-  backgroundColor: colors.palette.primary,
-  borderColor: colors.palette.primary,
-}
-
-const $navItemTextStyle: TextStyle = {
-  fontSize: 14,
-  lineHeight: 18,
-  fontFamily: typography.fonts.workSans.medium,
-}
-
-const $navItemTextActiveStyle: TextStyle = {
-  color: colors.palette.neutral100,
 }
 
 const $bottomContainer: ViewStyle = {
@@ -243,6 +193,7 @@ const $modelImageStyle: ImageStyle = {
 
 const $modelTextContainer: ViewStyle = {
   flexDirection: "row",
+  alignItems: "center",
   justifyContent: "space-between",
   borderWidth: 1,
   borderBottomLeftRadius: 15,
@@ -272,28 +223,20 @@ const $modelTextStatusStyle: TextStyle = {
 const $modelStatusStyle: ViewStyle = {
   flexDirection: "row",
   alignItems: "center",
-  marginBottom: 4,
+  marginTop: 4,
 }
 
-const $modelStarStyle: ViewStyle = {
-  flexDirection: "row",
-  alignItems: "center",
+const $modelRightBtn: ViewStyle = {
+  paddingHorizontal: 12,
+  paddingVertical: 8,
+  borderRadius: 6,
+  backgroundColor: colors.palette.primary,
 }
 
-const $modelStatusIconStyle: ViewStyle = {
-  height: 7,
-  width: 7,
-  backgroundColor: "#00E484",
-  borderRadius: 5,
-  marginRight: 4,
-}
-
-const $modelStarIcon: ImageStyle = {
-  marginRight: 4,
-  marginTop: 0,
-  flexShrink: 1,
-  alignContent: "center",
-  alignSelf: "center",
+const $modelRightBtnText: TextStyle = {
+  color: colors.palette.neutral100,
+  fontSize: 12,
+  lineHeight: 14,
 }
 
 const $modelRightTextStyle: ViewStyle = { flexDirection: "column", alignItems: "flex-end" }

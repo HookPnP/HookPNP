@@ -10,3 +10,6 @@ export * from "./Text"
 export * from "./TextField"
 export * from "./Toggle"
 export * from "./EmptyState"
+
+/// My custom built commponents
+export * from "./GridView"

@@ -49,6 +49,10 @@ export type AppStackParamList = {
   EnableLocation: undefined
   Home: NavigatorScreenParams<HomeTabParamList>
   ModelDetailsScreen: undefined
+  Messages: undefined
+  Notifications: undefined
+  Wallet: undefined
+  BookingConfirmed: undefined
 }
 
 /**
@@ -81,6 +85,9 @@ const AppStack = observer(function AppStack() {
           <Stack.Screen name="Home" component={HomeNavigator} />
 
           <Stack.Screen name="Demo" component={DemoNavigator} />
+          <Stack.Screen name="Notifications" component={Screens.NotificationsScreen} />
+          <Stack.Screen name="Messages" component={Screens.MessagesScreen} />
+          <Stack.Screen name="BookingConfirmed" component={Screens.BookingConfirmedScreen} />
         </>
       ) : (
         <>
