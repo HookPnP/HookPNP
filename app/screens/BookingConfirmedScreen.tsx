@@ -46,7 +46,7 @@ export const BookingConfirmedScreen: FC<BookingConfirmedScreenProps> = observer(
       // setIsSubmitted(false)
       setAuthEmail("")
 
-      navigation.navigate("GetStarted")
+      navigation.navigate("Wallet")
 
       // We'll mock this with a fake token.
       //   setAuthToken(String(Date.now()))

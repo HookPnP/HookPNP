@@ -34,7 +34,7 @@ export const ProfileScreen: FC<HomeTabScreenProps<"ProfileScreen">> = observer(
         id: 1,
         icon: "chat",
         hasSubGroup: false,
-        navigation: "Messages",
+        navigation: "MessageDetails",
       },
       {
         name: "Notifications",

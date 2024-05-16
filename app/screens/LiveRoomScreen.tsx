@@ -85,7 +85,7 @@ export const LiveRoomScreen: FC<HomeTabScreenProps<"LiveRoomScreen">> = observer
     const $bottomContainerInsets = useSafeAreaInsetsStyle(["bottom"])
 
     function viewModel() {
-      navigation.navigate("ModelDetailsScreen")
+      navigation.navigate("LiveRoomDetails")
     }
 
     return (

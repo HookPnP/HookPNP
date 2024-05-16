@@ -90,7 +90,7 @@ export const BookingsScreen: FC<HomeTabScreenProps<"BookingsScreen">> = observer
     const $bottomContainerInsets = useSafeAreaInsetsStyle(["bottom"])
 
     function viewModel() {
-      navigation.navigate("ModelDetailsScreen")
+      navigation.navigate("BookingDetails")
     }
 
     return (

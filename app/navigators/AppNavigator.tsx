@@ -53,6 +53,12 @@ export type AppStackParamList = {
   Notifications: undefined
   Wallet: undefined
   BookingConfirmed: undefined
+  ConfirmBooking: undefined
+  BookingDetails: undefined
+  LiveRoomDetails: undefined
+  MessageDetails: undefined
+  StoryDetails: undefined
+  StoryBook: undefined
 }
 
 /**
@@ -88,6 +94,14 @@ const AppStack = observer(function AppStack() {
           <Stack.Screen name="Notifications" component={Screens.NotificationsScreen} />
           <Stack.Screen name="Messages" component={Screens.MessagesScreen} />
           <Stack.Screen name="BookingConfirmed" component={Screens.BookingConfirmedScreen} />
+          <Stack.Screen name="Wallet" component={Screens.WalletScreen} />
+          <Stack.Screen name="ModelDetailsScreen" component={Screens.ModelDetailsScreen} />
+          <Stack.Screen name="ConfirmBooking" component={Screens.ConfirmBookingScreen} />
+          <Stack.Screen name="BookingDetails" component={Screens.BookingDetailsScreen} />
+          <Stack.Screen name="LiveRoomDetails" component={Screens.LiveRoomDetailsScreen} />
+          <Stack.Screen name="MessageDetails" component={Screens.MessageDetailsScreen} />
+          <Stack.Screen name="StoryDetails" component={Screens.StoryDetailsScreen} />
+          <Stack.Screen name="StoryBook" component={Screens.StoryBookScreen} />
         </>
       ) : (
         <>

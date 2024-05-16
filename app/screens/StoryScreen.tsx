@@ -96,7 +96,7 @@ export const StoryScreen: FC<HomeTabScreenProps<"StoryScreen">> = observer(funct
   const $bottomContainerInsets = useSafeAreaInsetsStyle(["bottom"])
 
   function viewStory() {
-    // navigation.navigate("ModelDetailsScreen")
+    navigation.navigate("StoryDetails")
   }
 
   return (

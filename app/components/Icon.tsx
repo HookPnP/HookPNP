@@ -126,6 +126,23 @@ export const iconRegistry = {
   wallet: require("../../assets/icons/wallet.png"),
   creditCard: require("../../assets/icons/creditCard.png"),
   logOut: require("../../assets/icons/out.png"),
+  addMoney: require("../../assets/icons/addMoney.png"),
+  receiveMoney: require("../../assets/icons/receiveMoney.png"),
+  credit: require("../../assets/icons/money-receive.png"),
+  debit: require("../../assets/icons/money-send.png"),
+  externalLink: require("../../assets/icons/externalLink.png"),
+  time: require("../../assets/icons/time.png"),
+  calendar: require("../../assets/icons/calendar.png"),
+  gift: require("../../assets/icons/gift.png"),
+  flower: require("../../assets/icons/flower.png"),
+  layer: require("../../assets/icons/layer.png"),
+  lightning: require("../../assets/icons/lightning.png"),
+  graduatingCap: require("../../assets/icons/graduatingCap.png"),
+  gamePad: require("../../assets/icons/game-pad.png"),
+  fork: require("../../assets/icons/fork.png"),
+  gem: require("../../assets/icons/gem.png"),
+  photo: require("../../assets/icons/photo.png"),
+  copy: require("../../assets/icons/copyN.png"),
 }
 
 const $imageStyleBase: ImageStyle = {
